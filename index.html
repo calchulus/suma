@@ -63,7 +63,7 @@ async function getTorusAddress() {
    var publicaddress = await torus.getPublicAddress(email).then( function(result) {
 	   var username = email.match(".+?(?=@)")[0];
 	console.log(username);
-   $("a").attr('href','https://manager.ens.domains/name/' + username + ".eth");
+   $("a#ens").attr('href','https://manager.ens.domains/name/' + username + ".eth");
   return result;
 //	     console.log(publicaddress);
                                                 });
