@@ -12,10 +12,10 @@
 <p>
 	SUMA assets provide exposure to the interest rate directly on various DeFi products. 
 </p>
-<h3>Scenario 1</h3>
-<p>A user coming from CeFi to DeFi wants to place her funds in a secure, interest-bearing "checking account" with full flexibility on withdrawal. She wants to maximize return while keeping flexibility</p>
-<p>She visits dYdX or Compound and sees interest rates for USDC, her preferred stablecoin, at nearly 10%! She doesn't know if they will stay that way though.</p>
-<p>She then allocates a small percentage of her portfolio to hedge against the risk of the interest rate moving against her</p>
+	<h3>Scenario 1</h3>
+	<p>A user coming from CeFi to DeFi wants to place her funds in a secure, interest-bearing "checking account" with full flexibility on withdrawal. She wants to maximize return while keeping flexibility</p>
+	<p>She visits dYdX or Compound and sees interest rates for USDC, her preferred stablecoin, at nearly 10%! She doesn't know if they will stay that way though.</p>
+	<p>She then allocates a small percentage of her portfolio to hedge against the risk of the interest rate moving against her</p>
 
 <p>Additional Scenarios to be added soon!</p>
 
@@ -26,10 +26,10 @@
 <p>Thus, users can choose how much to long or short this asset to cover their portfolio needs. In scenario 1 described above, the user may decide to go create a UMA token (or use an existing one) and sell/short the token for the interest rate of her desired product and term-length, thus giving her insurance incase the interest rate decreases for her DeFi.
 	</p>
 	
-<ul>Key benefits
-	<li>No fixed term length on insurance - user can sell value at any time</li>
-	<li>User can purchase at any time/get hedged/more safe interest rates</li>
-	<li>Can be used as a signal/tool for interest rate governance</li>
+	<ul>Key benefits
+		<li>No fixed term length on insurance - user can sell value at any time</li>
+		<li>User can purchase at any time/get hedged/more safe interest rates</li>
+		<li>Can be used as a signal/tool for interest rate governance</li>
 	
-</ul>
+	</ul>
 
