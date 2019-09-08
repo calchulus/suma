@@ -34,3 +34,16 @@
 	
 </ul>
 
+## Next Steps
+- Add an easy way to claim all the free subdomains for an email (check if price is free) automatically
+- Interest Rate Spread/ Brent/WTI-style Strategies
+- Building onchain price feed for UMA
+- Utilize this ENS address I bought as an easy to find and fund faucet: [ethboston.wantsome.eth](https://etherscan.io/tx/0x71394662f983d4488df54f1c3fce02f19b32627c0fb741b3cccfefc028c7b274)
+
+### Improvements Encountered to work with Project Teams on
+- Integrate Torus with more dApps
+- Add more custom styling/location features on Torus  interface/add a widget to drop in
+- Added functionality on UMA TokenBuilder to allow for UMA Token Search
+- Launching compatibility for more testnets for UMA, ENS.
+- Encorporate cDAI/cTokens directly into UMA (support for more than just DAI as collateral)
+- create a TCR for price feeds/repository of useful price feed sources for UMA
