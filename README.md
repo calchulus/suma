@@ -1,4 +1,5 @@
 # SUMA
+[Demo](https://calchulus.github.io/suma/index.html)
 
 <h2>The Problem</h2>
 
