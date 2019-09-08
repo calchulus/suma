@@ -21,15 +21,16 @@
 
 <h2>Mechanics</h2>
 <p>All SUMA assets in v1 will be valued according to the following formula: </p>
-	<p style="padding-left: 2.5%"><i>Price = 100 - leverage ( interest rate in % )</i></p>
+				<p style="padding-left: 2.5%"><i>Price = 100 - leverage ( interest rate in % )</i></p>
+
 
 <p>Thus, users can choose how much to long or short this asset to cover their portfolio needs. In scenario 1 described above, the user may decide to go create a UMA token (or use an existing one) and sell/short the token for the interest rate of her desired product and term-length, thus giving her insurance incase the interest rate decreases for her DeFi.
 	</p>
 	
-	<ul>Key benefits
+<ul>Key benefits
 		<li>No fixed term length on insurance - user can sell value at any time</li>
 		<li>User can purchase at any time/get hedged/more safe interest rates</li>
 		<li>Can be used as a signal/tool for interest rate governance</li>
 	
-	</ul>
+</ul>
 
