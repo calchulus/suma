@@ -1,0 +1,1019 @@
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+   
+     
+ <link rel='stylesheet' href='style.css'>
+    
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css'>
+
+
+<body>
+
+<div style="margin: 2.5%">
+	<h1>Rate Scan<hr></h1>
+</div>
+<div class="twocol">
+	
+	<div id="borrowtitle" style="margin: 5%">
+	<h2>Borrow Rates</h2>
+	</div>
+		<div id="info" style="margin: 5%">
+		</div>
+		<div id="lendtitle" style="margin: 4%;">
+	<h2><br>Lend Rates</h2>
+	</div>
+		<div id="info2" style="margin: 5%">
+			
+		</div>
+	</div>
+</body>
+
+<script>
+	$(document).ready(function() {
+		
+		
+ var loanArray = [
+//  {
+//    "provider": "Nuo",
+//    "borrow": [
+//      {
+//        "symbol": "USDC",
+//        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+//        "rate": 0.08560363653719037
+//      },
+//      {
+//        "symbol": "ETH",
+//        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+//        "rate": 0.026662023885763837
+//      },
+//      {
+//        "symbol": "DAI",
+//        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+//        "rate": 0.1296539364601806
+//      },
+//      {
+//        "symbol": "MKR",
+//        "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+//        "rate": 0.02328147751299647
+//      },
+//      {
+//        "symbol": "WBTC",
+//        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+//        "rate": 0.07197979800678515
+//      },
+//      {
+//        "symbol": "LINK",
+//        "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+//        "rate": 0.022056479708038944
+//      },
+//      {
+//        "symbol": "BAT",
+//        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+//        "rate": 0.02066664131474173
+//      },
+//      {
+//        "symbol": "KNC",
+//        "address": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
+//        "rate": 0.020886882584843395
+//      },
+//      {
+//        "symbol": "TUSD",
+//        "address": "0x8dd5fbce2f6a956c3022ba3663759011dd51e73e",
+//        "rate": 0.09463502380915928
+//      },
+//      {
+//        "symbol": "REP",
+//        "address": "0x1985365e9f78359a9b6ad760e32412f4a445e862",
+//        "rate": 0.03027734458624001
+//      },
+//      {
+//        "symbol": "ZRX",
+//        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+//        "rate": 0.056970051577975384
+//      }
+//    ],
+//    "supply": [
+//      {
+//        "symbol": "USDC",
+//        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+//        "rate": 0.13230295749468643
+//      },
+//      {
+//        "symbol": "ETH",
+//        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+//        "rate": 0.00444681594278219
+//      },
+//      {
+//        "symbol": "DAI",
+//        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+//        "rate": 0.1805697646518856
+//      },
+//      {
+//        "symbol": "MKR",
+//        "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+//        "rate": 0.00023619967138309341
+//      },
+//      {
+//        "symbol": "WBTC",
+//        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+//        "rate": 0.02307442431043711
+//      },
+//      {
+//        "symbol": "LINK",
+//        "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+//        "rate": 0.019952023694298826
+//      },
+//      {
+//        "symbol": "BAT",
+//        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+//        "rate": 0.000954304914462533
+//      },
+//      {
+//        "symbol": "KNC",
+//        "address": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
+//        "rate": 0.0008712026840586862
+//      },
+//      {
+//        "symbol": "TUSD",
+//        "address": "0x8dd5fbce2f6a956c3022ba3663759011dd51e73e",
+//        "rate": 0.1618113842814736
+//      },
+//      {
+//        "symbol": "REP",
+//        "address": "0x1985365e9f78359a9b6ad760e32412f4a445e862",
+//        "rate": 0.005951999358525608
+//      },
+//      {
+//        "symbol": "ZRX",
+//        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+//        "rate": 0.007235004182545017
+//      }
+//    ]
+//  },
+  {
+    "provider": "CoinList",
+    "borrow": [
+      {
+        "symbol": "BAT",
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "rate": 0.063875
+      },
+      {
+        "symbol": "BCH",
+        "address": null,
+        "rate": 0.146
+      },
+      {
+        "symbol": "EOS",
+        "address": "0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0",
+        "rate": 0.082125
+      },
+      {
+        "symbol": "ETC",
+        "address": null,
+        "rate": 0.100375
+      },
+      {
+        "symbol": "LTC",
+        "address": null,
+        "rate": 0.09125
+      },
+      {
+        "symbol": "MKR",
+        "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+        "rate": 0.09125
+      },
+      {
+        "symbol": "PAX",
+        "address": null,
+        "rate": 0.100375
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.100375
+      },
+      {
+        "symbol": "XRP",
+        "address": null,
+        "rate": 0.05475
+      },
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.063875
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.0365
+      },
+      {
+        "symbol": "BTC",
+        "address": null,
+        "rate": 0.045625
+      }
+    ],
+    "supply": [
+      {
+        "symbol": "BAT",
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "rate": 0.051100000000000007
+      },
+      {
+        "symbol": "BCH",
+        "address": null,
+        "rate": 0.1168
+      },
+      {
+        "symbol": "EOS",
+        "address": "0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0",
+        "rate": 0.06570000000000001
+      },
+      {
+        "symbol": "ETC",
+        "address": null,
+        "rate": 0.08030000000000001
+      },
+      {
+        "symbol": "LTC",
+        "address": null,
+        "rate": 0.073
+      },
+      {
+        "symbol": "MKR",
+        "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+        "rate": 0.073
+      },
+      {
+        "symbol": "PAX",
+        "address": null,
+        "rate": 0.08030000000000001
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.08030000000000001
+      },
+      {
+        "symbol": "XRP",
+        "address": null,
+        "rate": 0.043800000000000006
+      },
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.051100000000000007
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.0292
+      },
+      {
+        "symbol": "BTC",
+        "address": null,
+        "rate": 0.0365
+      }
+    ]
+  },
+  {
+    "provider": "Compound",
+    "borrow": [
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.061060900020768
+      },
+      {
+        "symbol": "BAT",
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "rate": 0.050325653712384
+      },
+      {
+        "symbol": "REP",
+        "address": "0x1985365e9f78359a9b6ad760e32412f4a445e862",
+        "rate": 0.0500308575411744
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.0834796668030912
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.1616631536726784
+      }
+    ],
+    "supply": [
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.0013507770204
+      },
+      {
+        "symbol": "BAT",
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "rate": 0.0000327774714048
+      },
+      {
+        "symbol": "REP",
+        "address": "0x1985365e9f78359a9b6ad760e32412f4a445e862",
+        "rate": 0.000003087658224
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.0055897428578976
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.0938969347593888
+      }
+    ]
+  },
+  {
+    "provider": "CompoundV2",
+    "borrow": [
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.0219955406463648
+      },
+      {
+        "symbol": "BAT",
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "rate": 0.0376845181790688
+      },
+      {
+        "symbol": "REP",
+        "address": "0x1985365e9f78359a9b6ad760e32412f4a445e862",
+        "rate": 0.0244186351226496
+      },
+      {
+        "symbol": "WBTC",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "rate": 0.0375285420271008
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.1560248268946848
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.1015192937851776
+      },
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.0414903883593312
+      }
+    ],
+    "supply": [
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.000131679451008
+      },
+      {
+        "symbol": "BAT",
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "rate": 0.0019994308624224
+      },
+      {
+        "symbol": "REP",
+        "address": "0x1985365e9f78359a9b6ad760e32412f4a445e862",
+        "rate": 0.0003236932975968
+      },
+      {
+        "symbol": "WBTC",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "rate": 0.001973499606432
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.0994913243564832
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.0464232073493376
+      },
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.0026750942771904
+      }
+    ]
+  },
+  
+  {
+    "provider": "Poloniex",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "BTC",
+        "address": "Unknown",
+        "rate": 0.000365
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.017885
+      },
+      {
+        "symbol": "XRP",
+        "address": "Unknown",
+        "rate": 0.02555
+      },
+      {
+        "symbol": "LTC",
+        "address": "Unknown",
+        "rate": 0.0064094
+      },
+      {
+        "symbol": "EOS",
+        "address": "0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0",
+        "rate": 0.02774
+      },
+      {
+        "symbol": "XMR",
+        "address": "Unknown",
+        "rate": 0.00365
+      },
+      {
+        "symbol": "DASH",
+        "address": "Unknown",
+        "rate": 0.000365
+      },
+      {
+        "symbol": "ETC",
+        "address": "Unknown",
+        "rate": 0.06351
+      },
+      {
+        "symbol": "BTS",
+        "address": "Unknown",
+        "rate": 0.000365
+      },
+      {
+        "symbol": "CLAM",
+        "address": "Unknown",
+        "rate": 0.01528255
+      },
+      {
+        "symbol": "DOGE",
+        "address": "Unknown",
+        "rate": 0.000365
+      },
+      {
+        "symbol": "FCT",
+        "address": "Unknown",
+        "rate": 0.000365
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.01825
+      },
+      {
+        "symbol": "USDT",
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "rate": 0.07957
+      }
+    ]
+  },
+  {
+    "provider": "Bitfinex",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "BTC",
+        "address": "Unknown",
+        "rate": 0.013431
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.022444
+      },
+      {
+        "symbol": "XRP",
+        "address": "Unknown",
+        "rate": 0.041137
+      },
+      {
+        "symbol": "LTC",
+        "address": "Unknown",
+        "rate": 0.03633
+      },
+      {
+        "symbol": "EOS",
+        "address": "0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0",
+        "rate": 0.00219
+      },
+      {
+        "symbol": "USDT",
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "rate": 0.125515
+      },
+      {
+        "symbol": "BSV",
+        "address": "Unknown",
+        "rate": 0.091846
+      },
+      {
+        "symbol": "XMR",
+        "address": "Unknown",
+        "rate": 0.038113
+      },
+      {
+        "symbol": "NEO",
+        "address": "Unknown",
+        "rate": 0.145357
+      },
+      {
+        "symbol": "ETC",
+        "address": "Unknown",
+        "rate": 0.185668
+      },
+      {
+        "symbol": "OMG",
+        "address": "0xd26114cd6ee289accf82350c8d8487fedb8a0c07",
+        "rate": 0.002989
+      },
+      {
+        "symbol": "ZEC",
+        "address": "Unknown",
+        "rate": 0.069941
+      },
+      {
+        "symbol": "BTG",
+        "address": "Unknown",
+        "rate": 0.050972
+      },
+      {
+        "symbol": "SAN",
+        "address": "Unknown",
+        "rate": 0.083853
+      },
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.034392
+      }
+    ]
+  },
+  {
+    "provider": "Celsius",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.03
+      },
+      {
+        "symbol": "BTC",
+        "address": "Unknown",
+        "rate": 0.03
+      },
+      {
+        "symbol": "DASH",
+        "address": "Unknown",
+        "rate": 0.06
+      },
+      {
+        "symbol": "BCH",
+        "address": "Unknown",
+        "rate": 0.0375
+      },
+      {
+        "symbol": "LTC",
+        "address": "Unknown",
+        "rate": 0.045
+      },
+      {
+        "symbol": "ZEC",
+        "address": "Unknown",
+        "rate": 0.0415
+      },
+      {
+        "symbol": "BTG",
+        "address": "Unknown",
+        "rate": 0.08
+      },
+      {
+        "symbol": "XRP",
+        "address": "Unknown",
+        "rate": 0.025
+      },
+      {
+        "symbol": "XLM",
+        "address": "Unknown",
+        "rate": 0.03
+      },
+      {
+        "symbol": "OMG",
+        "address": "0xd26114cd6ee289accf82350c8d8487fedb8a0c07",
+        "rate": 0.0425
+      },
+      {
+        "symbol": "TUSD",
+        "address": "Unknown",
+        "rate": 0.081
+      },
+      {
+        "symbol": "GUSD",
+        "address": "Unknown",
+        "rate": 0.081
+      },
+      {
+        "symbol": "PAX",
+        "address": "Unknown",
+        "rate": 0.081
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.081
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.081
+      },
+      {
+        "symbol": "CEL",
+        "address": "Unknown",
+        "rate": 0.03
+      },
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.0425
+      },
+      {
+        "symbol": "ORBS",
+        "address": "Unknown",
+        "rate": 0.07
+      },
+      {
+        "symbol": "USDT ERC20",
+        "address": "Unknown",
+        "rate": 0.081
+      }
+    ]
+  },
+  {
+    "provider": "dYdX",
+    "borrow": [
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.0101698838064
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.164240019003168
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.074802909846096
+      }
+    ],
+    "supply": [
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.00093710516976
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.128046916645776
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.040600676556288
+      }
+    ]
+  },
+  {
+    "provider": "Nexo",
+    "borrow": [
+      {
+        "symbol": "USDT",
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "rate": 0.16
+      },
+      {
+        "symbol": "TUSD",
+        "address": null,
+        "rate": 0.16
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.16
+      },
+      {
+        "symbol": "PAX",
+        "address": null,
+        "rate": 0.16
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.16
+      }
+    ],
+    "supply": [
+      {
+        "symbol": "USDT",
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "rate": 0.08
+      },
+      {
+        "symbol": "TUSD",
+        "address": null,
+        "rate": 0.08
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.08
+      },
+      {
+        "symbol": "PAX",
+        "address": null,
+        "rate": 0.08
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.08
+      }
+    ]
+  },
+  {
+    "provider": "BlockFi",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "BTC",
+        "address": null,
+        "rate": 0.062000000000000006
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.033
+      },
+      {
+        "symbol": "GUSD",
+        "address": null,
+        "rate": 0.086
+      }
+    ]
+  },
+  {
+    "provider": "Wealthfront",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "USD",
+        "address": null,
+        "rate": 0.0232
+      }
+    ]
+  },
+  {
+    "provider": "Betterment",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "USD",
+        "address": null,
+        "rate": 0.023799999999999998
+      }
+    ]
+  },
+  {
+    "provider": "SoFi",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "USD",
+        "address": null,
+        "rate": 0.02
+      }
+    ]
+  },
+  {
+    "provider": "CryptoCom",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "BTC",
+        "address": null,
+        "rate": 0.06
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.06
+      },
+      {
+        "symbol": "LTC",
+        "address": null,
+        "rate": 0.06
+      },
+      {
+        "symbol": "XRP",
+        "address": null,
+        "rate": 0.06
+      },
+      {
+        "symbol": "TUSD",
+        "address": null,
+        "rate": 0.06
+      },
+      {
+        "symbol": "PAX",
+        "address": null,
+        "rate": 0.06
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.06
+      }
+    ]
+  },
+  {
+    "provider": "Marcus",
+    "borrow": [],
+    "supply": [
+      {
+        "symbol": "USD",
+        "address": null,
+        "rate": 0.02
+      }
+    ]
+  },
+  {
+    "provider": "Fulcrum",
+    "borrow": [
+      {
+        "symbol": "BAT",
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "rate": 0.01
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.08030154351916424
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.013354348146230632
+      },
+      {
+        "symbol": "KNC",
+        "address": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
+        "rate": 0.01
+      },
+      {
+        "symbol": "REP",
+        "address": "0xe94327d07fc17907b4db788e5adf2ed424addff6",
+        "rate": 0.04275641630920601
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.12263334911354333
+      },
+      {
+        "symbol": "WBTC",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "rate": 0.020150600690946978
+      },
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0.01
+      }
+    ],
+    "supply": [
+      {
+        "symbol": "BAT",
+        "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "rate": 0
+      },
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.11113760265091387
+      },
+      {
+        "symbol": "ETH",
+        "address": "0x0000000000000000000000000000000000000000",
+        "rate": 0.0005080919154617462
+      },
+      {
+        "symbol": "KNC",
+        "address": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
+        "rate": 0
+      },
+      {
+        "symbol": "REP",
+        "address": "0xe94327d07fc17907b4db788e5adf2ed424addff6",
+        "rate": 0.0077953705722392875
+      },
+      {
+        "symbol": "USDC",
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "rate": 0.052121391285752036
+      },
+      {
+        "symbol": "WBTC",
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "rate": 0.0030382190585884223
+      },
+      {
+        "symbol": "ZRX",
+        "address": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "rate": 0
+      }
+    ]
+  },
+	 {
+    "provider": "MakerDao",
+    "borrow": [
+      {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0.165
+      }
+    ],
+    "supply": [
+		 {
+        "symbol": "DAI",
+        "address": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "rate": 0
+      }
+	]
+  },
+];
+
+var i;
+	var text = "";
+		var text2 = ""
+
+for (i = 0; i < loanArray.length; i++) { 
+	source = loanArray[i];
+	
+sourceborrowArray = source["borrow"];
+	for (j = 0; j< sourceborrowArray.length; j++) {
+	sym = sourceborrowArray[j]["symbol"];
+	add = sourceborrowArray[j]["address"];
+	rat = (sourceborrowArray[j]["rate"] * 100).toFixed(2);
+//		console.log(sym);
+	text += '<li style="padding-bottom: 14px"><a style=" display:block; text-decoration: none;" target="_blank"  href="https://etherscan.io/address/' + add + '"' +    '<div class="ui card"> <div class="content"> <div class="header" style="font-weight: bold; font-size: 1.28571429em; margin-top: -0.21Z425em; margin-bottom: 0.1em; line-height: 1.28571429em; color: rgba(0, 0, 0, 0.85) !important" >' + sym + 
+     ' </div>  <p style="font-size: 0.6em;" class="ui  blue  basic label">' + source["provider"] + '</p> <div class="meta"> <p class="description">' + rat + '</p></div></div></a></div></li>';  
+	document.getElementById("info").innerHTML= text;
+	
+};
+
+	
+sourcelendArray = source["supply"];
+//	console.log(sourcelendArray);
+for (j = 0; j< sourceborrowArray.length; j++) {
+	sym = sourcelendArray[j]["symbol"];
+	add = sourcelendArray[j]["address"];
+	rat = (sourcelendArray[j]["rate"] * 100).toFixed(2);
+	text2 += '<li style="padding-bottom: 14px"><a style=" display:block; text-decoration: none;" target="_blank" href="https://etherscan.io/address/' + add + '"' +    '<div class="ui card" style="background-color: aqua"> <div class="content"> <div class="header" style="font-weight: bold; font-size: 1.28571429em; margin-top: -0.21Z425em; margin-bottom: 0.1em; line-height: 1.28571429em; color: rgba(0, 0, 0, 0.85) !important" >' +
+      sym + ' </div>  <p style="font-size: 0.6em;" class="ui  blue  basic label">' + source["provider"] + '</p> <div class="meta"> <p class="description">' + rat + '</p></div></div></a></div></li>';  
+//	console.log(text2);
+};
+
+}
+		
+//		console.log(text);
+	document.getElementById("info").innerHTML= text;
+	document.getElementById("info2").innerHTML= text2;
+	
+	});
+	</script>
+
+

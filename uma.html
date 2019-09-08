@@ -1,0 +1,117 @@
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+
+
+<html>
+  <link rel='stylesheet' href='style.css'>
+    
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css'>
+
+<body>
+<div style="margin-left: 5%; margin-top: 3%;">
+	<h1>SUMA</h1>
+	<h2>The Problem</h2>
+	<p>Users who are lending tend to want to lock in high interest rates, or at least do not want to see their interest rates fall.</p>
+	<p>Conversely, borrowers want certainty over their interest rates.</p>
+	<p>The easiest way to do this is to set fixed rate, fixed term loans, but these are rigid and fail to give users the full flexibility of DeFi.</p>
+	
+	<h2>Introducing SUMA - Secure with UMA</h2>
+	<p>We are introducing the proposal to create SUMA assets - assets powered by UMA Protocol that track the real value of lending &amp; borrowing rates for all DeFi platforms</p>
+	
+<h2>Why is this Important</h2>
+<p>
+	SUMA assets provide exposure to the interest rate directly on various DeFi products. 
+</p>
+<h3>Scenario 1</h3>
+<p>A user coming from CeFi to DeFi wants to place her funds in a secure, interest-bearing "checking account" with full flexibility on withdrawal. She wants to maximize return while keeping flexibility</p>
+<p>She visits dYdX or Compound and sees interest rates for USDC, her preferred stablecoin, at nearly 10%! She doesn't know if they will stay that way though.</p>
+<p>She then allocates a small percentage of her portfolio to hedge against the risk of the interest rate moving against her</p>
+
+<p>Additional Scenarios to be added soon!</p>
+
+<h2>Mechanics</h2>
+<p>All SUMA assets in v1 will be valued according to the following formula: </p>
+	<p style="padding-left: 2.5%"><i>Price = 100 - leverage ( interest rate in % )</i></p>
+
+<p>Thus, users can choose how much to long or short this asset to cover their portfolio needs. In scenario 1 described above, the user may decide to go create a UMA token (or use an existing one) and sell/short the token for the interest rate of her desired product and term-length, thus giving her insurance incase the interest rate decreases for her DeFi.
+	</p>
+	
+	<ul>Key benefits
+	<li>No fixed term length on insurance - user can sell value at any time</li>
+	<li>User can purchase at any time/get hedged/more safe interest rates</li>
+	<li>Can be used as a signal/tool for interest rate governance</li>
+	
+	</ul>
+	
+	<h2>Let's Get Started</h2>
+
+<div style="padding-left: 2%">
+	
+	<select style=" border:none; padding: 8px;" id="platform">
+	  <option value="dydx">dYdX</option>
+	  <option value="compound">Compound</option>
+	  <option value="mkr">Maker</option>
+	  <option value="fulcrum">Fulcrum</option>
+	</select>
+	
+	<select style=" border:none; padding: 8px;" id="asset">
+	  <option value="DAI">DAI</option>
+	  <option value="ETH">ETH</option>
+	  <option value="USDC">USDC</option>
+	</select>
+	
+	<select style="border:none; padding: 8px;" id="exposure">
+	  <option value="SR">Supply</option>
+	  <option value="BR">Borrow</option>
+	</select>
+	
+	<select style=" border:none; padding: 8px;" id="expiry">
+	  <option value="20191001">1 month</option>
+	  <option value="20191101">2 month</option>
+	  <option value="20191201">3 month</option>
+	  <option value="20200101">4 month</option>
+	</select>
+	
+	<select style=" border:none; padding: 8px;" id="leverage">
+	  <option value="1x">1x</option>
+	  <option value="2x">2x</option>
+	  <option value="3x">3x</option>
+	  <option value="4x">4x</option>
+	  <option value="5x">5x</option>
+	</select>
+	
+<button style="background-color: aqua; color: white; border:none; padding: 8px; border-radius: 5px;" name="expiry" onclick="getUMASymbol()">Get SUMA Asset</button>
+</div>
+
+
+	<p style="margin: 1% 2%">UMA Symbol </p>
+<div style="margin: 2%; color: aqua;" id="info"></div>
+<div id="etherscan"></div>
+
+
+
+<script>
+	async function getUMASymbol() {
+		
+	var platform = document.getElementById("platform");
+		console.log(platform);
+	var asset = document.getElementById("asset");
+		var exposure = document.getElementById("exposure");
+		var expiry = document.getElementById("expiry");
+		var leverage = document.getElementById("leverage");
+		
+	 var text = platform.options[platform.selectedIndex].value + asset.options[asset.selectedIndex].value + exposure.options[exposure.selectedIndex].value + expiry.options[expiry.selectedIndex].value +
+		 leverage.options[leverage.selectedIndex].value;
+		var newButton = '<a style="margin-left: 2%" class="button" id="etherscan" target="_blank" href="https://rinkeby.etherscan.io/">Check Etherscan</a>'
+//		document.getElementById("info").innerHTML= "UMA Symbol: " + text;
+		var dummy = $('<input>').val(text).appendTo('div#info').select();
+ document.execCommand('copy');
+		document.getElementById("etherscan").innerHTML = newButton;
+		
+	};
+	</script>
+
+</div>
+
+
+</body></html>

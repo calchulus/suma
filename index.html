@@ -1,0 +1,83 @@
+<html>
+  
+  <link rel='stylesheet' href='style.css'>
+    
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css'>
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  
+   <script src="https://app.tor.us/v0.0.23/embed.min.js"
+        integrity="sha384-rH43pxyiFOwHf69VO2yvr7CZqGZ+X5q8zsMPoSzBDBUm1gH/kuF6EY3VTC6i2ORd"
+        crossorigin="anonymous"></script>
+   <body>
+   	<div style="margin: 5%; text-align: center">
+   		<h1 style="color: aqua; font-weight: bold; text-align: center">Zero To Crypt0</h1>
+   		
+   		<p>Don't have an ETH Address? Just Enter Your Email here!
+</p>
+   		<input id="email" placeholder="bob@google.com" type="email">
+<button id="tor" onclick="getTorusAddress()" >Get Free Testnet ETH</button>
+<!--   		<input id="address" placeholder="0x...">-->
+  
+   	<br>
+ <br>
+<div><a class="button" target="_blank" id="ens">Get Your ENS Domain</a>
+   		<!--   	Link Takes you to ENS NOW--></div>
+  	 	<br>
+  	 	
+ <div style="margin: 1.25%">  	<a class="button" target="_blank" id="cdai" href="https://app.compound.finance/asset/cDAI">Get free testnet cDAI</a>
+   		  	 </div>
+   		  	 
+   		  	 <div style="margin: 3%">
+   		  
+   		  	 	 <a class="button" target="_blank" id="dydx" href="https://trade.dydx.exchange/markets">View dYdX Markets</a>
+   		  	 	 <a class="button" target="_blank" id="compound" href="https://app.compound.finance">View Compound Markets</a>
+   		  	 	 <a class="button" target="_blank" id="mkr" href="https://cdp.makerdao.com/">View MakerDao Gov. Fee</a>
+   		  	 	
+   		  	 
+   		  	 </div>
+   		  	 
+   		  	 <div style="margin: 3%">
+   		  	 <a class="button" target="_blank" id="mkr" href="rates.html">View All Rates</a>
+		</div>
+  	 	<div>
+  	 		  	 		 <a class="button" target="_blank" id="uma" href="http://tokenbuilder.umaproject.org/">Hedge Your Interest</a>
+  	 	</div>
+ 	 		 <div style="margin: 3%">
+  	 		 <a class="button" target="_blank" id="uma" href="uma.html">Read More</a>
+  	 	</div>
+   	 	</div>
+   </body>    
+
+      
+        
+       <script>
+		  
+async function getTorusAddress() {
+    const email = document.getElementById("email").value;
+    console.log(email);
+	console.log("HH");
+	
+//    console.log("HI");
+	var user = await torus.getUserInfo().then(result => result.data.payload.email)
+   var publicaddress = await torus.getPublicAddress(email).then( function(result) {
+	   var username = email.match(".+?(?=@)")[0];
+	console.log(username);
+   $("a").attr('href','https://manager.ens.domains/name/' + username + ".eth");
+  return result;
+//	     console.log(publicaddress);
+                                                });
+	
+		     console.log(publicaddress);
+//publicaddress = "0x9e3DbC6DC441Fd67D519f6dBDA9b0d007D2F4C5F";
+	$.ajax({url: "https://faucet.ropsten.be/donate/" + publicaddress, success: function(result){
+//    $("#div1").html(result);
+		console.log(result);
+  }});
+	
+	
+
+}  
+	</script>
+      
+  </html>
