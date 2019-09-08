@@ -1,7 +1,8 @@
 # SUMA
 
 <h2>The Problem</h2>
-	<p>Users who are lending tend to want to lock in high interest rates, or at least do not want to see their interest rates fall.</p>
+
+<p>Users who are lending tend to want to lock in high interest rates, or at least do not want to see their interest rates fall.</p>
 	<p>Conversely, borrowers want certainty over their interest rates.</p>
 	<p>The easiest way to do this is to set fixed rate, fixed term loans, but these are rigid and fail to give users the full flexibility of DeFi.</p>
 	
@@ -33,6 +34,9 @@
 		<li>Can be used as a signal/tool for interest rate governance</li>
 	
 </ul>
+
+## Conclusion
+<p>DeFi is not easy to get into, or build on, starting from scratch. Using Torus, ENS, and UMA, we built something to allow users to go  from zero (just a gmail) to crypt0. </p>
 
 ## Next Steps
 - Add an easy way to claim all the free subdomains for an email (check if price is free) automatically
